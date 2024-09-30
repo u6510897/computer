@@ -1,0 +1,35 @@
+plt.legend(['Line 1', 'Line 2'])
+plt.title('Currency by states')
+plt.ylabel('Cumulative Close Value', fontsize=14)
+plt.xlabel('Time', fontsize=14)
+plt.figure(figsize=(6.4, 50,4))
+plt.xtick(90)
+
+plt.plot(x,y, linewidth = 8)
+plt.plot(x, y, color = "red")
+b: blue 
+g: green 
+r: red 
+c: cyan 
+m: magenta 
+y: yellow 
+k: black 
+w: white
+
+plt.bar(x, y)
+plt.barh(x, y)
+plt.hist(y, bins=5)
+plt.pie(y)
+
+plt.grid(which="major", color='m', linestyle='-.', linewidth=0.5)
+Solid line: linestyle='-' (this is the default) 
+Dashed line: linestyle='--' 
+Dotted line: linestyle=':' 
+Dash-dot line: linestyle='-.' 
+None (no line): linestyle='None' or linestyle=''
+
+plt.tight_layout()
+plt.show()
+
+path = 'C:\\Users\\christ\\Downloads\\' + 'q01.png'
+plt.savefig(path)
