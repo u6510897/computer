@@ -1,0 +1,40 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def q01():
+    path = "C:\\Users\\christ\\Downloads\\transactions1.csv"
+    df = pd.read_csv(path)
+    #print(df)
+    df2 = df[df['shippingCountry'].notnull()]
+    #print(df2)
+    df3 = df2.query('shippingCountry == "US"')
+    df3['shippingState'] = df3['shippingState'].fillna('N/A')
+    df3['shippingState'] = df3['shippingState'].str.upper()
+    #print(df3)
+    #print(df3.head())
+
+    state_list = []
+    for x in df3.index:
+        state_list.append(df3.at[x, 'shippingState'])
+    state_list2 = list(dict.fromkeys(state_list))
+    #print(state_list2)
+
+    num_transactions_state = []
+    for x in state_list2:
+        df_state3 = df3[df3['shippingState'] == x]
+        num_transactions = len(df_state3)
+        print("Transactions in " + str(x) + " is " + str(num_transactions) + ".")
+        num_transactions_state.append(num_transactions)
+
+    print(state_list2)
+    print(num_transactions_state)
+
+    state_list2 = [str(x) for x in state_list2]
+
+    plt.figure(figsize=(20.4, 6.4))
+    plt.bar(state_list2, num_transactions_state)
+    plt.tight_layout
+    #plt.show()
+    path = 'C:\\Users\\christ\\Downloads\\' + 'q01.png'
+    plt.savefig(path)
